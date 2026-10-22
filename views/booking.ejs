@@ -1,0 +1,49 @@
+<%- include('partials/header', { clinic }) %>
+<main id="main" class="section-space">
+  <div class="container booking-container">
+    <p class="eyebrow">YOUR NEXT STEP TO BETTER HEALTH</p>
+    <h1 class="h2">Book an appointment</h1>
+    <p class="text-secondary">Enter your details below. All appointment times are in Dubai time (UTC+04:00).</p>
+    <div class="alert alert-info">Sample clinic: bookings are saved locally for demonstration, not sent to a real clinic. Use test details only. The doctor field does not verify availability.</div>
+    <% if (error) { %>
+      <div class="alert alert-danger" role="alert"><%= error %></div>
+    <% } %>
+    <form action="/book" method="post" class="contact-card p-4">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="specialty">Specialty</label>
+          <select class="form-select" id="specialty" name="specialty" required>
+            <option value="">Choose a specialty</option>
+            <% specialties.forEach((specialty) => { %>
+              <option value="<%= specialty %>" <%= values.specialty === specialty ? 'selected' : '' %>><%= specialty %></option>
+            <% }); %>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="doctor">Doctor</label>
+          <input class="form-control" id="doctor" name="doctor" value="<%= values.doctor || '' %>" maxlength="120" placeholder="Enter your requested doctor's name" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label" for="appointmentDateTime">Appointment date and time (Dubai)</label>
+          <input class="form-control" type="datetime-local" id="appointmentDateTime" name="appointmentDateTime" value="<%= values.appointmentDateTime || '' %>" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label" for="patientName">Patient name</label>
+          <input class="form-control" id="patientName" name="patientName" autocomplete="name" value="<%= values.patientName || '' %>" maxlength="120" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="patientPhone">Phone</label>
+          <input class="form-control" type="tel" id="patientPhone" name="patientPhone" autocomplete="tel" value="<%= values.patientPhone || '' %>" maxlength="30" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="patientEmail">Email</label>
+          <input class="form-control" type="email" id="patientEmail" name="patientEmail" autocomplete="email" value="<%= values.patientEmail || '' %>" maxlength="254" required>
+        </div>
+        <div class="col-12 mt-4">
+          <button class="btn btn-primary" type="submit">Confirm booking <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+<%- include('partials/footer', { clinic }) %>

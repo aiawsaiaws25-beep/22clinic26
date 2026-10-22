@@ -1,0 +1,133 @@
+<%- include('partials/header', { clinic }) %>
+<main id="main">
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <p class="eyebrow"><span class="status-dot"></span> CARE FOR YOU. CARE FOR YOUR FAMILY.</p>
+          <p class="clinic-name"><%= clinic.name %></p>
+          <h1>Expert care,<br><span>close to home.</span></h1>
+          <p class="hero-copy">Feel better about your healthcare. Thoughtful, personal care for every generation, right here in <%= clinic.area %>.</p>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <a class="btn btn-primary btn-lg" href="/book">Book an appointment <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a>
+            <a class="secondary-link" href="#specialties">Explore our specialties</a>
+          </div>
+          <div class="hero-notes">
+            <span><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Four specialties, one clinic</span>
+            <span><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Open six days a week</span>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="care-visual">
+            <div class="visual-orbit orbit-one" aria-hidden="true"></div>
+            <div class="visual-orbit orbit-two" aria-hidden="true"></div>
+            <div class="floating-label"><i class="bi bi-heart-fill" aria-hidden="true"></i> Your health comes first</div>
+            <div class="care-symbol" aria-hidden="true"><i class="bi bi-heart-pulse"></i></div>
+            <div class="care-card">
+              <div class="care-card-icon"><i class="bi bi-hospital" aria-hidden="true"></i></div>
+              <p class="eyebrow mb-2">YOUR NEIGHBORHOOD CLINIC</p>
+              <h2>A little closer.<br>A lot more personal.</h2>
+              <div class="care-card-footer"><span><i class="bi bi-geo-alt me-1" aria-hidden="true"></i><%= clinic.area %></span><span class="small-pill">Here for you</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="care-strip">
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-md-4"><i class="bi bi-people" aria-hidden="true"></i> Care for the whole family</div>
+        <div class="col-md-4"><i class="bi bi-grid" aria-hidden="true"></i> Connected, multi-specialty care</div>
+        <div class="col-md-4"><i class="bi bi-clock" aria-hidden="true"></i> Hours that work around you</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-space" id="specialties" aria-labelledby="specialties-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div><p class="eyebrow">GOOD HEALTH STARTS HERE</p><h2 id="specialties-heading">Our Specialties</h2></div>
+        <p>Everyday wellness to specialist support.<br>The care you need, all in one place.</p>
+      </div>
+      <div class="row g-4">
+        <% const specialties = [
+          { name: 'General Physician', icon: 'clipboard2-pulse', description: 'Everyday healthcare, preventive checkups and support for your overall wellbeing.' },
+          { name: 'ENT', icon: 'ear', description: 'Focused care for ear, nose and throat concerns, helping you feel like yourself again.' },
+          { name: 'Dentist', icon: 'emoji-smile', description: 'Gentle dental care for healthy teeth, comfortable visits and confident smiles.' },
+          { name: 'Cardiologist', icon: 'heart-pulse', description: 'Personalized heart health consultations, assessment and ongoing cardiac care.' }
+        ]; %>
+        <% specialties.forEach((specialty, index) => { %>
+          <div class="col-sm-6 col-lg-3">
+            <article class="specialty-card">
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="specialty-icon"><i class="bi bi-<%= specialty.icon %>" aria-hidden="true"></i></span>
+                <span class="card-number">0<%= index + 1 %></span>
+              </div>
+              <h3><%= specialty.name %></h3>
+              <p><%= specialty.description %></p>
+              <a href="#contact" aria-label="Enquire about <%= specialty.name %> care">Enquire about care <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </article>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section section-space" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <div class="about-panel">
+            <span class="about-mark"><i class="bi bi-plus-lg" aria-hidden="true"></i></span>
+            <h2>Healthcare with<br>a human touch.</h2>
+            <p>A familiar place.<br>A team that listens.<br>Care built around you.</p>
+            <span class="about-location"><i class="bi bi-geo-alt" aria-hidden="true"></i> Rooted in <%= clinic.area %></span>
+          </div>
+        </div>
+        <div class="col-lg-7 about-copy">
+          <p class="eyebrow">ABOUT US</p>
+          <h2 id="about-heading">Your neighborhood.<br>Your clinic. Your wellbeing.</h2>
+          <p>At <%= clinic.name %>, we believe good healthcare starts with a conversation. We're here to make looking after yourself and your family feel simpler, more comfortable and closer to home.</p>
+          <p>From routine checkups to specialist consultations, our approach puts you at the center: time to listen, clear guidance and care that respects your individual needs.</p>
+          <div class="row g-3 mt-3">
+            <div class="col-sm-6"><span class="about-value"><i class="bi bi-chat-heart" aria-hidden="true"></i> Personal, attentive care</span></div>
+            <div class="col-sm-6"><span class="about-value"><i class="bi bi-signpost-split" aria-hidden="true"></i> Clear guidance, every step</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space contact-section" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <p class="eyebrow">LET'S TAKE CARE OF YOU</p>
+          <h2 id="contact-heading">Contact<br><span class="text-primary">your local clinic.</span></h2>
+          <p class="contact-intro">Ready to book an appointment? Contact reception to discuss the right specialty and arrange a convenient time.</p>
+          <a class="btn btn-primary" href="/book">Book an appointment</a>
+          <div class="booking-note"><i class="bi bi-info-circle" aria-hidden="true"></i><p>This is a sample clinic website. The booking form saves demo appointments locally. Phone and address details must be confirmed before visiting.</p></div>
+        </div>
+        <div class="col-lg-7">
+          <div class="contact-card">
+            <div class="contact-row">
+              <span class="contact-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+              <div><h3>Come say hello</h3><p><%= clinic.address %></p><span class="detail-note">Sample address - confirm before visiting</span></div>
+            </div>
+            <div class="contact-row">
+              <span class="contact-icon"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+              <div><h3>Call reception</h3><p><%= clinic.phone %></p><span class="detail-note">Placeholder - add the clinic's phone number</span></div>
+            </div>
+            <div class="contact-row">
+              <span class="contact-icon"><i class="bi bi-clock" aria-hidden="true"></i></span>
+              <div class="flex-grow-1"><h3>Opening hours</h3><div class="hours-line"><span>Monday - Saturday</span><strong>9am - 9pm</strong></div><div class="hours-line"><span>Sunday</span><span>Closed</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<%- include('partials/footer', { clinic }) %>

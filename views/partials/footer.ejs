@@ -1,0 +1,28 @@
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a class="footer-brand" href="/"><i class="bi bi-heart-pulse-fill me-2" aria-hidden="true"></i><%= clinic.name %></a>
+        <p class="mb-0"><%= clinic.tagline %></p>
+      </div>
+      <div class="footer-bottom">
+        <small>&copy; <%= new Date().getFullYear() %> <%= clinic.name %>. All rights reserved.</small>
+        <small><%= clinic.name %> &middot; built at London International &middot; <a href="https://lisrc.ae">lisrc.ae</a> &middot; by <%= clinic.author %></small>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const navigation = document.getElementById('main-nav');
+    navigation.addEventListener('click', (event) => {
+      const link = event.target.closest('a');
+      if (!link || !navigation.classList.contains('show')) return;
+      const target = document.getElementById(new URL(link.href).hash.slice(1));
+      if (!target) return;
+      navigation.addEventListener('hidden.bs.collapse', () => {
+        target.scrollIntoView();
+      }, { once: true });
+      bootstrap.Collapse.getOrCreateInstance(navigation).hide();
+    });
+  </script>
+</body>
+</html>

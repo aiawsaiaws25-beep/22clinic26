@@ -1,0 +1,24 @@
+<%- include('partials/header', { clinic }) %>
+<main id="main" class="section-space">
+  <div class="container booking-container">
+    <p class="eyebrow"><i class="bi bi-check-circle me-2" aria-hidden="true"></i>BOOKING SAVED</p>
+    <h1 class="h2">Your appointment is booked.</h1>
+    <p class="text-secondary">Your demo booking has been saved locally. This does not arrange an appointment with a real clinic.</p>
+    <div class="contact-card p-4">
+      <dl class="row booking-details mb-0">
+        <dt class="col-sm-4">Booking reference</dt><dd class="col-sm-8">#<%= booking.id %></dd>
+        <dt class="col-sm-4">Status</dt><dd class="col-sm-8"><%= booking.status %></dd>
+        <dt class="col-sm-4">Specialty</dt><dd class="col-sm-8"><%= booking.specialty %></dd>
+        <dt class="col-sm-4">Doctor</dt><dd class="col-sm-8"><%= booking.doctor %></dd>
+        <dt class="col-sm-4">Date and time</dt><dd class="col-sm-8"><%= new Date(booking.appointmentDateTime).toLocaleString('en-GB', { timeZone: 'Asia/Dubai', dateStyle: 'long', timeStyle: 'short' }) %> (Dubai, UTC+04:00)</dd>
+        <dt class="col-sm-4">Patient</dt><dd class="col-sm-8"><%= booking.patientName %></dd>
+        <dt class="col-sm-4">Phone</dt><dd class="col-sm-8"><%= booking.patientPhone %></dd>
+        <dt class="col-sm-4">Email</dt><dd class="col-sm-8"><%= booking.patientEmail %></dd>
+        <dt class="col-sm-4">Created</dt><dd class="col-sm-8"><%= booking.createdAt %></dd>
+      </dl>
+    </div>
+    <a class="btn btn-primary mt-4" href="/">Return home</a>
+    <p class="small text-secondary mt-3">Keep these details for your records. Refreshing this confirmation may submit another booking.</p>
+  </div>
+</main>
+<%- include('partials/footer', { clinic }) %>
