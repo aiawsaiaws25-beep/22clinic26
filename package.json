@@ -5,10 +5,14 @@
   "description": "A responsive clinic landing page built with Express and EJS.",
   "scripts": {
     "dev": "node --watch server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --test"
   },
   "dependencies": {
     "ejs": "^7.0.2",
     "express": "^5.3.0"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

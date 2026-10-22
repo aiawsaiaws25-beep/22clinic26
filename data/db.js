@@ -2,8 +2,9 @@ const { DatabaseSync } = require('node:sqlite');
 const { mkdirSync } = require('node:fs');
 const path = require('node:path');
 
-mkdirSync(path.join(__dirname), { recursive: true });
-const databasePath = process.env.DB_PATH || path.join(__dirname, 'lakeside.db');
+// Vercel's filesystem is read-only except /tmp, so the database lives there in production.
+const defaultPath = process.env.VERCEL ? '/tmp/lakeside.db' : path.join(__dirname, 'lakeside.db');
+const databasePath = process.env.DB_PATH || defaultPath;
 if (databasePath !== ':memory:') {
   mkdirSync(path.dirname(path.resolve(databasePath)), { recursive: true });
 }

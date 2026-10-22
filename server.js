@@ -50,11 +50,16 @@ app.use((error, req, res, next) => {
   res.status(error.status || 500).type('text').send('Unable to process your request. Please try again or contact reception.');
 });
 
-const server = app.listen(port, () => {
-  console.log(`Clinic website running at http://localhost:${server.address().port}`);
-});
+module.exports = app;
 
-server.on('error', (error) => {
-  console.error('Unable to start the clinic website:', error);
-  process.exitCode = 1;
-});
+// Vercel imports the app as a serverless function; only listen when run directly.
+if (require.main === module) {
+  const server = app.listen(port, () => {
+    console.log(`Clinic website running at http://localhost:${server.address().port}`);
+  });
+
+  server.on('error', (error) => {
+    console.error('Unable to start the clinic website:', error);
+    process.exitCode = 1;
+  });
+}
